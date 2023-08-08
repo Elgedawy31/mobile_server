@@ -4,9 +4,10 @@ const CreateProduct = async (req, res, next) => {
   try {
     const savedproduct = new ProductModel(req.body);
 
-    savedproduct.save();
+    const SavedPro =await  savedproduct.save();
 
-    res.status(200).json(savedproduct);
+
+     res.status(200).json(SavedPro);
   } catch (error) {
     res.status(404).json(error);
   }
@@ -22,6 +23,8 @@ const getProducts = async (req, res, next) => {
     query.suplier ? (search.suplier = query.suplier) : null;
 
     const Products = await ProductModel.find(search);
+
+    !Products && res.status(404).json('Products Not Founded')
 
     res.status(200).json(Products);
   } catch (error) {

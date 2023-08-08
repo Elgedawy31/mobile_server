@@ -1,4 +1,4 @@
-const router = require("express")();
+const router = require("express").Router();
 const { CreateProduct, getProducts  ,getProduct} = require("../controller/product.controller");
 
 router.post("/", CreateProduct);

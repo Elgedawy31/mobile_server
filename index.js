@@ -4,6 +4,10 @@ const mongoose = require("mongoose");
 const env = require("dotenv");
 const cors = require("cors");
 const ProductRouter = require("./routes/product.routes");
+const AuthRouter = require("./routes/auth.routes");
+const UserRouter = require("./routes/user.routes");
+const CartRouter = require("./routes/cart.routes");
+const OrderRouter = require("./routes/order.routes");
 
 env.config();
 app.use(express.json());
@@ -19,6 +23,10 @@ mongoose
   });
 
 app.use("/products", ProductRouter);
+app.use("/auth", AuthRouter);
+app.use("/user", UserRouter);
+app.use("/cart", CartRouter);
+app.use("/orders", CartRouter);
 
 app.listen(process.env.PORT || 8080, () => {
   console.log(
